@@ -1,0 +1,39 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#range-container {
+    display: flex;
+    align-content: center;
+    gap: 1rem;
+}
+
+#priceRange {
+    width: 500px;
+}
+
+button {
+    aspect-ratio: 1;
+    padding: 5px;
+    line-height: 0;
+    text-align: center;
+}
+
+#priceCalculator {
+    margin-top: 50px;
+}
+
+h5 {
+    font-size: large;
+    font-weight: bolder;
+}
