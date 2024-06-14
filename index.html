@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,30 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <section id="range-container">
             <button id="btnDetract">-</button>
-            <input type="range" name="priceRange" id="priceRange" min="3" max="150" step="3" value="15">
+            <div>
+                <div id="notches-numbers">
+                    <span class="number n-3">3</span>
+                    <span class="number n-9">9</span>
+                    <span class="number n-15">15</span>
+                    <span class="number n-24">24</span>
+                    <span class="number n-45">45</span>
+                    <span class="number n-70">70</span>
+                </div>
+                <div id="notches-container" class="range-guide-container">
+                </div>
+                <hr class="range-guide">
+                <input type="range" name="priceRange" id="priceRange" min="3" max="150" step="3" value="15">
+            </div>
             <button id="btnAdd">+</button>
         </section>
         <section id="priceCalculator">
             <h5>
+                ROI stimato:
                 <span id="finalPrice"></span>
                 €
             </h5>
@@ -23,4 +39,5 @@
     </main>
     <script src="index.js"></script>
 </body>
+
 </html>
