@@ -99,11 +99,30 @@ h5 {
 }
 
 .btnRange {
+    -webkit-appearance: none; /* Remove default WebKit styles */
+    -moz-appearance: none;    /* Remove default Firefox styles */
+    appearance: none;         /* Remove default styles for other browsers */
     aspect-ratio: 1;
-    padding: 5px;
+    padding: 10px;
     line-height: 0;
     text-align: center;
     align-self: flex-end;
+    cursor: pointer;
+
+    background-color: #5FB3F9;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: medium;
+    margin-bottom: -7px;
+}
+
+.btnRange:hover {
+    background: linear-gradient(42deg, rgba(95,179,249,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+.btnRange:active {
+    background: linear-gradient(42deg, rgba(95,179,249,1) 50%, rgba(255,255,255,1) 100%);
 }
 
 /* Notches */
