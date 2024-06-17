@@ -11,34 +11,36 @@
 
 <body>
     <main>
-        <select id="activitySelect">
-            <option value="" selected disabled>Seleziona la tua attività</option>
-        </select>
-        <section id="range-container">
-            <button id="btnDetract">-</button>
-            <div>
-                <div id="notches-numbers">
-                    <span class="number n-3">3</span>
-                    <span class="number n-9">9</span>
-                    <span class="number n-15">15</span>
-                    <span class="number n-24">24</span>
-                    <span class="number n-45">45</span>
-                    <span class="number n-70">70</span>
+        <div id="calculator">
+            <select id="activitySelect">
+                <option value="" selected disabled>Seleziona il tipo di contratto</option>
+            </select>
+            <section id="range-container">
+                <button id="btnDetract">-</button>
+                <div>
+                    <div id="notches-numbers">
+                        <span class="number n-3">3</span>
+                        <span class="number n-9">9</span>
+                        <span class="number n-15">15</span>
+                        <span class="number n-24">24</span>
+                        <span class="number n-45">45</span>
+                        <span class="number n-70">70</span>
+                    </div>
+                    <div id="notches-container" class="range-guide-container">
+                    </div>
+                    <hr class="range-guide">
+                    <input type="range" name="priceRange" id="priceRange" min="3" max="150" step="3" value="15">
                 </div>
-                <div id="notches-container" class="range-guide-container">
-                </div>
-                <hr class="range-guide">
-                <input type="range" name="priceRange" id="priceRange" min="3" max="150" step="3" value="15">
-            </div>
-            <button id="btnAdd">+</button>
-        </section>
-        <section id="priceCalculator">
-            <h5>
-                ROI stimato:
-                <span id="finalPrice"></span>
-                €
-            </h5>
-        </section>
+                <button id="btnAdd">+</button>
+            </section>
+            <section id="priceCalculator">
+                <h5>
+                    ROI stimato:
+                    <span id="finalPrice"></span>
+                    €
+                </h5>
+            </section>
+        </div>
     </main>
     <script src="index.js"></script>
 </body>
