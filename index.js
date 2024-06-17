@@ -6,17 +6,28 @@ const contractsCount = document.getElementById('contracts');
 
 // notches
 const notchesContainer = document.getElementById('notches-container');
+const notchesNumbersContainer = document.getElementById('notches-numbers');
 
 function createNotches(positions) {
+    // Clear existing notches and numbers
+    notchesContainer.innerHTML = '';
+    notchesNumbersContainer.innerHTML = '';
+
     positions.forEach(position => {
         const notch = document.createElement('div');
         notch.classList.add('notch');
-        notch.style.left = `calc(${position}% - 0.5px)`; // Adjust position as needed
+        notch.style.left = `calc(${(100 * position) / 150}% - 0.5px)`;
         notchesContainer.appendChild(notch);
+
+        const number = document.createElement('span');
+        number.classList.add('number');
+        number.style.left = `calc(${(100 * position) / 150}%)`;
+        number.textContent = position;
+        notchesNumbersContainer.appendChild(number);
     });
 }
 
-const notchPositions = [3, 9, 15, 24, 45, 70];
+const notchPositions = [3, 15, 30, 45, 70, 100, 140];
 createNotches(notchPositions);
 
 // type of contracts

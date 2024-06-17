@@ -161,40 +161,11 @@ main {
     background: #5FB3F9;
 }
 
-.n-3 {
+.number {
     position: absolute;
     bottom: 0;
-    left: calc(3% - 0.3rem);
-}
-
-.n-9 {
-    position: absolute;
-    bottom: 0;
-    left: calc(9% - 0.3rem);
-}
-
-.n-15 {
-    position: absolute;
-    bottom: 0;
-    left: calc(15% - 0.3rem);
-}
-
-.n-24 {
-    position: absolute;
-    bottom: 0;
-    left: calc(24% - 0.3rem);
-}
-
-.n-45 {
-    position: absolute;
-    bottom: 0;
-    left: calc(45% - 0.3rem);
-}
-
-.n-70 {
-    position: absolute;
-    bottom: 0;
-    left: calc(70% - 0.3rem);
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
 
 /* SELECT style */
