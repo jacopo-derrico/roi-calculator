@@ -89,3 +89,11 @@ btnAdd.addEventListener('click', () => {
 });
 
 roiCalculator(priceRange.value, 20);
+
+function updateRangeStyle() {
+    const value = (priceRange.value - priceRange.min) / (priceRange.max - priceRange.min) * 100;
+    priceRange.style.setProperty('--range-percent', value + '%');
+}
+
+priceRange.addEventListener('input', updateRangeStyle);
+updateRangeStyle()
