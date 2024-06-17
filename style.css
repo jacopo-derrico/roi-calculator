@@ -57,6 +57,7 @@ h5 {
 #notches-numbers {
     position: relative;
     font-weight: bold;
+    color: #5FB3F9;
 }
 
 .range-guide {
