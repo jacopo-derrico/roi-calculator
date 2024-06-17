@@ -29,13 +29,23 @@
                     <div id="notches-container" class="range-guide-container">
                     </div>
                     <hr class="range-guide">
-                    <input type="range" name="priceRange" id="priceRange" min="3" max="150" step="3" value="15">
+                    <input type="range" name="priceRange" id="priceRange" min="3" max="150" value="15">
                 </div>
                 <button id="btnAdd" class="btnRange">+</button>
             </section>
-            <section id="priceCalculator">
+            <section class="results">
+                <h5>
+                    Contratti chiusi:
+                </h5>
+                <h5 class="result-price">
+                    <span id="contracts"></span>
+                </h5>
+            </section>
+            <section class="results">
                 <h5>
                     ROI stimato:
+                </h5>
+                <h5 class="result-price">
                     <span id="finalPrice"></span>
                     €
                 </h5>

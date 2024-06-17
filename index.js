@@ -2,6 +2,7 @@ const priceRange = document.getElementById('priceRange');
 const btnAdd = document.getElementById('btnAdd');
 const btnDetract = document.getElementById('btnDetract');
 const finalPrice = document.getElementById('finalPrice');
+const contractsCount = document.getElementById('contracts');
 
 // notches
 const notchesContainer = document.getElementById('notches-container');
@@ -67,11 +68,12 @@ selectElement.addEventListener('change', function() {
 
 function roiCalculator(contracts, cost) {
     finalPrice.textContent = contracts*cost;
-    console.log(contracts)
+    contractsCount.textContent = contracts;
 }
 
 priceRange.addEventListener('input', function() {
     roiCalculator(priceRange.value, selectElement.value);
+
 });
 
 btnDetract.addEventListener('click', () => {

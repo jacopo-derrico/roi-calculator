@@ -18,13 +18,18 @@ main {
     align-items: center;
 }
 
-#priceCalculator {
+.results {
     margin-top: 50px;
+    display: flex;
+    gap: 1rem;
 }
 
-h5 {
+.results h5 {
     font-size: large;
-    font-weight: bolder;
+}
+
+.results .result-price {
+    color: #5FB3F9;
 }
 
 /* RANGE input --------------------------------------------------------- */
