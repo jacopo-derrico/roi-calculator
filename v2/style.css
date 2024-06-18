@@ -130,66 +130,30 @@ main {
     background: linear-gradient(42deg, rgba(95,179,249,1) 50%, rgba(255,255,255,1) 100%);
 }
 
-/* Notches */
-
-#notches-container {
+/* Tooltip style */
+.range-wrapper {
     position: relative;
-    width: 97%;
-    height: 20px;
-    margin-bottom: -10px;
-}
-
-#notches-numbers {
-    position: relative;
-    font-weight: bold;
-    color: #5FB3F9;
-}
-
-.range-guide {
     width: 100%;
-    margin-bottom: 2rem;
-    border: none;
-    border-top: 3px solid #5FB3F9;
-    border-radius: 3px;
 }
 
-.notch {
+.tooltip {
     position: absolute;
-    top: 4px;
-    width: 3px;
-    height: 6px; 
-    background: #5FB3F9;
-}
-
-.number {
-    position: absolute;
-    bottom: 0;
+    bottom: 30px; /* Adjust this value to position the tooltip above the thumb */
+    left: 50%;
     transform: translateX(-50%);
+    background-color: #5FB3F9;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
     white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s, bottom 0.2s;
+    opacity: 0;
 }
 
-/* SELECT style */
-
-#activitySelect {
-    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
-    -moz-appearance: none; /* Remove default styling in Firefox */
-    appearance: none; /* Remove default styling in modern browsers */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 8px 12px;
-    font-size: 16px;
-    color: #333;
-    width: 100%;
-    max-width: 100%; 
-    cursor: pointer;
-    margin-bottom: 50px;
-}
-
-select {
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%204%205"><path%20fill="none"%20stroke="%23333"%20stroke-width="1"%20d="M1,1%20L3,3%20L1,5%20"/></svg>');
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-position: right 10px center; /* Position of the background image */
-    background-size: 8px 10px; /* Size of the background image */
-    padding-right: 30px; /* Add space for the arrow */
+#priceRange:focus + .tooltip,
+#priceRange:hover + .tooltip {
+    opacity: 1;
+    bottom: 35px; /* Adjust this value to animate the tooltip up when visible */
 }

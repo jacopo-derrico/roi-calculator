@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI calculator</title>
+
+    <link rel="stylesheet" href="/v2/style.css">
+</head>
+
+<body>
+    <header style="text-align: center;">
+        <a href="/index.html">V1</a>
+    </header>
+    <main>
+        <!-- <div id="calculator">
+            <section id="range-container">
+                <button id="btnDetract" class="btnRange">-</button>
+                <div id="range-input">
+                    <div class="range-wrapper">
+                        <input type="range" name="priceRange" id="priceRange" min="3" max="150" value="15">
+                        <div class="tooltip" id="rangeTooltip"></div>
+                    </div>
+                </div>
+                <button id="btnAdd" class="btnRange">+</button>
+            </section>
+            <section style="margin-top: 50px;">
+                <div class="results">
+                    <h5>Contratti chiusi:</h5>
+                    <h5 class="result-price"><span id="contracts"></span></h5>
+                </div>
+                <div class="results">
+                    <h5>ROI stimato:</h5>
+                    <h5 class="result-price"><span id="finalPrice"></span>€</h5>
+                </div>
+            </section>
+
+        </div>
+        </div> -->
+
+
+        <div class="container">
+            <form id="formROI">
+                <div class="form-group">
+                    <section id="range-container">
+                        <button id="btnDetract" class="btnRange">-</button>
+                        <div id="range-input">
+                            <div class="range-wrapper">
+                                <input type="range" name="priceRange" id="priceRange" min="3" max="150" value="15">
+                                <div class="tooltip" id="rangeTooltip"></div>
+                            </div>
+                        </div>
+                        <button id="btnAdd" class="btnRange">+</button>
+                    </section>
+                </div>
+                <div class="form-group">
+                    <label for="chiamateAggiuntive">Quante Richieste vorresti ricevere Mensilmente?</label>
+                    <input type="number" id="chiamateAggiuntive" name="chiamateAggiuntive" value="50" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="valoreCliente">Valore Medio di un tuo cliente:</label>
+                    <input type="number" id="valoreCliente" name="valoreCliente" value="400" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="tassoConversione">Richieste convertite su 10 Chiamate ricevute:</label>
+                    <input type="number" id="tassoConversione" name="tassoConversione" value="3" required><br>
+                </div>
+
+            </form>
+
+            <div id="risultato" class="result-box">
+                <h3>Risultati:</h3>
+                <div class="infographic">
+
+
+                    <div class="info-box">
+                        <h4>Numero clienti paganti</h4>
+                        <p id="clientiPaganti">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Investimento Mensile Stimato</h4>
+                        <p id="investimentoMensile">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Guadagno Potenziale Mensile</h4>
+                        <p id="guadagnoPotenziale">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>ROI</h4>
+                        <p id="roi">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="v2/index.js"></script>
+</body>
+
+</html>
