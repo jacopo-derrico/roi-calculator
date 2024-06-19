@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI calculator</title>
+
+    <link rel="stylesheet" href="/v2/style.css">
+</head>
+
+<body>
+    <header style="text-align: center;">
+        <a href="/index.html">V1</a>
+        <a href="/indexV2.html">V2</a>
+        <a href="/indexV3.html">V3</a>
+        <a href="/indexV4.html">V4</a>
+    </header>
+    <main>
+        <div id="rko-roi-container">
+            <form id="formROI">
+                <div class="form-group">
+                    <section id="range-container">
+                        <button type="button" id="btnDetract" class="btnRange">-</button>
+                        <div id="range-input">
+                            <div class="range-wrapper">
+                                <input type="range" name="priceRange" id="priceRange" min="3" max="150" value="16">
+                                <div class="tooltipROI" id="rangeTooltip"></div>
+                            </div>
+                        </div>
+                        <button type="button" id="btnAdd" class="btnRange">+</button>
+                    </section>
+                    <div id="activityNames" class="activity-names"> </div>
+                </div>
+                <div class="form-group">
+                    <label for="chiamateAggiuntive">Quante Richieste vorresti ricevere Mensilmente?</label>
+                    <input class="ROIinput" type="number" id="chiamateAggiuntive" name="chiamateAggiuntive" value="50"
+                        required><br>
+                </div>
+                <div class="form-group">
+                    <label for="valoreCliente">Valore Medio di un tuo cliente:</label>
+                    <input class="ROIinput" type="number" id="valoreCliente" name="valoreCliente" value="400"
+                        required><br>
+                </div>
+                <div class="form-group">
+                    <label for="tassoConversione">Richieste convertite su 10 Chiamate ricevute:</label>
+                    <input class="ROIinput" type="number" id="tassoConversione" name="tassoConversione" value="3"
+                        required><br>
+                </div>
+
+            </form>
+
+            <div id="risultato" class="result-box">
+                <h3>Risultati:</h3>
+                <div class="infographic">
+                    <div class="info-box">
+                        <h4>Numero clienti paganti</h4>
+                        <p id="clientiPaganti">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Investimento Mensile Stimato</h4>
+                        <p id="investimentoMensile">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Guadagno Potenziale Mensile</h4>
+                        <p id="guadagnoPotenziale">-</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>ROI</h4>
+                        <p id="roi">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const priceRange = document.getElementById('priceRange');
+                const btnAdd = document.getElementById('btnAdd');
+                const btnDetract = document.getElementById('btnDetract');
+                const rangeTooltip = document.getElementById('rangeTooltip');
+                const form = document.getElementById("formROI");
+                const activityNames = document.getElementById('activityNames');
+
+                const activities = [
+                    { value: 16, names: "es. Servizi di potatura alberi" },
+                    { value: 18, names: "es. Servizi per porte da garage - Infissi, riparazione finestre e vetri" },
+                    { value: 19, names: "es. Tuttofare - Giardinieri e cura del prato" },
+                    { value: 20, names: "es. Servizi di pulizia domestica - Addetto alla pulizia di piscine" },
+                    { value: 22, names: "es. Falegnami & Carpentieri - Servizi di disinfestazione - Traslochi" },
+                    { value: 23, names: "es. Ispettore immobiliare" },
+                    { value: 25, names: "es. Impresa di Costruzioni e Ristrutturazione" },
+                    { value: 26, names: "es. Caldaie, Impianti di riscaldamento & Condizionatori" },
+                    { value: 27, names: "es. Elettricisti" },
+                    { value: 30, names: "es. Servizi di pavimentazione - Servizi paesaggistici" },
+                    { value: 39, names: "es. Idraulici - Servizi per danni causati dall'acqua" },
+                    { value: 80, names: "es. Servizi di posa di fondazioni" },
+                    { value: 100, names: "es. Altri servizi" }
+                ];
+
+                priceRange.addEventListener('input', function () {
+                    updateTooltip();
+                    updateActivityNames();
+                    form.dispatchEvent(new Event('input'));
+                });
+
+                btnDetract.addEventListener('click', () => {
+                    if (priceRange.value > 3) {
+                        priceRange.value = parseInt(priceRange.value) - 3;
+                        updateTooltip();
+                        updateActivityNames();
+                        form.dispatchEvent(new Event('input'));
+                    }
+                });
+
+                btnAdd.addEventListener('click', () => {
+                    if (priceRange.value < 150) {
+                        priceRange.value = parseInt(priceRange.value) + 3;
+                        updateTooltip();
+                        updateActivityNames();
+                        form.dispatchEvent(new Event('input'));
+                    }
+                });
+
+                function updateTooltip() {
+                    rangeTooltip.textContent = priceRange.value + '€';
+                    const tooltipWidth = rangeTooltip.style.width;
+                    const value = priceRange.value;
+
+                    rangeTooltip.style.left = `calc(${(100 * value) / 150}% + (${tooltipWidth / 2}px - 5px))`;
+                }
+
+                function updateActivityNames() {
+                    const value = parseInt(priceRange.value);
+
+                    // Find the current activity based on the value
+                    const currentActivity = activities.find(activity => value >= activity.value && value < (activity.value + 3));
+
+                    if (currentActivity) {
+                        // Update activity names
+                        activityNames.textContent = currentActivity.names;
+                    }
+                }
+
+                // Initial updates
+                updateTooltip();
+                updateActivityNames();
+
+                setTimeout(() => {
+                    form.dispatchEvent(new Event('input'));
+                }, 0);
+
+                form.addEventListener("input", function (event) {
+                    event.preventDefault();
+
+                    var costoPerChiamata = parseFloat(document.getElementById('priceRange').value);
+                    var chiamateAggiuntive = parseFloat(document.getElementById("chiamateAggiuntive").value);
+                    var valoreCliente = parseFloat(document.getElementById("valoreCliente").value);
+                    var tassoConversione = parseFloat(document.getElementById("tassoConversione").value);
+
+                    var investimentoMensile = costoPerChiamata * chiamateAggiuntive;
+                    var guadagnoPotenziale = chiamateAggiuntive * (valoreCliente * (tassoConversione / 10));
+                    var ROI = ((guadagnoPotenziale - investimentoMensile) / investimentoMensile) * 100;
+                    var clientconvert = guadagnoPotenziale / valoreCliente;
+                    var roundedClientConvert = parseFloat(clientconvert.toFixed(0));
+
+                    var risultatoHTML =
+                        "<h3 style='text-align: center;'>Risultati:</h3>" +
+                        "<div class='info-box'>" +
+                        "   <h4>Numero clienti paganti</h4>" +
+                        "   <p style='color: #ff6347; font-weight: bold;'>" + roundedClientConvert + "</p>" +
+                        "</div>" +
+                        "<div class='info-box'>" +
+                        "   <h4>Costo Mensile Stimato</h4>" +
+                        "   <p style='color: #ff6347; font-weight: bold;'>" + investimentoMensile.toFixed(2) + "€</p>" +
+                        "</div>" +
+                        "<div class='info-box'>" +
+                        "   <h4>Guadagno Potenziale Mensile</h4>" +
+                        "   <p style='color: #ff6347; font-weight: bold;'>" + guadagnoPotenziale.toFixed(2) + "€</p>" +
+                        "</div>" +
+                        "<div class='info-box'>" +
+                        "   <h4>ROI:</h4>" +
+                        "   <p style='color: #ff6347; font-weight: bold;'>" + ROI.toFixed(2) + "%</p>" +
+                        "</div>";
+
+                    document.getElementById("risultato").innerHTML = risultatoHTML;
+                });
+            });
+        </script>
+    </main>
+</body>
+
+</html>
