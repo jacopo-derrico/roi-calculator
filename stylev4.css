@@ -137,15 +137,26 @@
     width: 15px;
     height: 15px;
     padding-top: 1px;
-    margin-top: 2px;
     margin-right: 1rem;
 }
 
 #questionTooltip {
     display: none;
+    position: absolute;
+    color: #fff;
+    background-color: rgb(69, 69, 69);
+    padding: 10px;
+    border-radius: 10px;
+    bottom: -30px;
 }
 
-.activity-names:hover #questionTooltip {
+#activitiesTip {
+    cursor: pointer;
+    margin-inline: 45px;
+    position: relative;
+}
+
+#activitiesTip:hover #questionTooltip {
     display: block;
 }
 
