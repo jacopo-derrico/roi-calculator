@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROI calculator</title>
 
-    <link rel="stylesheet" href="/v2/style.css">
+    <link rel="stylesheet" href="/styleV4.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <a href="/indexV3.html">V3</a>
         <a href="/indexV4.html">V4</a>
     </header>
-    <main>
+    <main style="margin-top: 50px;">
         <div id="rko-roi-container">
             <form id="formROI">
                 <div class="form-group">
@@ -83,24 +83,45 @@
                 const activityNames = document.getElementById('activityNames');
 
                 const activities = [
-                    { value: 16, names: "es. Servizi di potatura alberi" },
-                    { value: 18, names: "es. Servizi per porte da garage - Infissi, riparazione finestre e vetri" },
-                    { value: 19, names: "es. Tuttofare - Giardinieri e cura del prato" },
-                    { value: 20, names: "es. Servizi di pulizia domestica - Addetto alla pulizia di piscine" },
-                    { value: 22, names: "es. Falegnami & Carpentieri - Servizi di disinfestazione - Traslochi" },
-                    { value: 23, names: "es. Ispettore immobiliare" },
-                    { value: 25, names: "es. Impresa di Costruzioni e Ristrutturazione" },
-                    { value: 26, names: "es. Caldaie, Impianti di riscaldamento & Condizionatori" },
-                    { value: 27, names: "es. Elettricisti" },
-                    { value: 30, names: "es. Servizi di pavimentazione - Servizi paesaggistici" },
-                    { value: 39, names: "es. Idraulici - Servizi per danni causati dall'acqua" },
-                    { value: 80, names: "es. Servizi di posa di fondazioni" },
-                    { value: 100, names: "es. Altri servizi" }
+                    "es. Servizi di potatura alberi",
+                    "es. Servizi per porte da garage",
+                    "ex. Infissi, riparazione finestre e vetri",
+                    "es. Tuttofare",
+                    "es. Giardinieri e cura del prato",
+                    "es. Servizi di pulizia domestica",
+                    "es. Addetto alla pulizia di piscine",
+                    "es. Falegnami & Carpentieri",
+                    "es. Servizi di disinfestazione",
+                    "es. Traslochi",
+                    "es. Ispettore immobiliare",
+                    "es. Impresa di Costruzioni e Ristrutturazione",
+                    "es. Caldaie, Impianti di riscaldamento & Condizionatori",
+                    "es. Elettricisti",
+                    "es. Servizi di pavimentazione",
+                    "es. Servizi paesaggistici",
+                    "es. Idraulici",
+                    "es. Servizi per danni causati dall'acqua",
+                    "es. Servizi di posa di fondazioni",
+                    "es. Installazione di sistemi di sicurezza",
+                    "es. Servizi di manutenzione stradale",
+                    "es. Pannelli solari e installazione",
+                    "es. Servizi di gestione dei rifiuti",
+                    "es. Installazione di impianti idraulici",
+                    "es. Servizi di elettronica per la casa",
+                    "es. Installazione di serrature e videochiusura",
+                    "es. Servizi di illuminazione esterna",
+                    "es. Manutenzione e riparazione di ascensori",
+                    "es. Servizi di tinteggiatura e rivestimenti",
+                    "es. Installazione di sistemi di allarme",
+                    "es. Servizi di pulizia industriale",
+                    "es. Installazione di pavimenti in legno",
+                    "es. Servizi di gestione della raccolta differenziata",
+                    "es. Installazione di sistemi di climatizzazione"
                 ];
+
 
                 priceRange.addEventListener('input', function () {
                     updateTooltip();
-                    updateActivityNames();
                     form.dispatchEvent(new Event('input'));
                 });
 
@@ -108,7 +129,6 @@
                     if (priceRange.value > 3) {
                         priceRange.value = parseInt(priceRange.value) - 3;
                         updateTooltip();
-                        updateActivityNames();
                         form.dispatchEvent(new Event('input'));
                     }
                 });
@@ -117,7 +137,6 @@
                     if (priceRange.value < 150) {
                         priceRange.value = parseInt(priceRange.value) + 3;
                         updateTooltip();
-                        updateActivityNames();
                         form.dispatchEvent(new Event('input'));
                     }
                 });
@@ -130,21 +149,18 @@
                     rangeTooltip.style.left = `calc(${(100 * value) / 150}% + (${tooltipWidth / 2}px - 5px))`;
                 }
 
-                function updateActivityNames() {
-                    const value = parseInt(priceRange.value);
-
-                    // Find the current activity based on the value
-                    const currentActivity = activities.find(activity => value >= activity.value && value < (activity.value + 3));
-
-                    if (currentActivity) {
-                        // Update activity names
-                        activityNames.textContent = currentActivity.names;
-                    }
+                function getRandomActivity() {
+                    const randomIndex = Math.floor(Math.random() * activities.length);
+                    return activities[randomIndex];
                 }
+
+                priceRange.addEventListener("change", (event) => {
+                    activityNames.textContent = getRandomActivity();
+                });
+
 
                 // Initial updates
                 updateTooltip();
-                updateActivityNames();
 
                 setTimeout(() => {
                     form.dispatchEvent(new Event('input'));
