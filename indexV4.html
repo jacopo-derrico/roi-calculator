@@ -135,6 +135,7 @@
                         priceRange.value = parseInt(priceRange.value) - 3;
                         updateTooltip();
                         form.dispatchEvent(new Event('input'));
+                        activityNames.textContent = getRandomActivity();
                     }
                 });
 
@@ -143,6 +144,7 @@
                         priceRange.value = parseInt(priceRange.value) + 3;
                         updateTooltip();
                         form.dispatchEvent(new Event('input'));
+                        activityNames.textContent = getRandomActivity();
                     }
                 });
 
