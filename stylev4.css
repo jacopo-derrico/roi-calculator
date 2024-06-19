@@ -119,11 +119,36 @@
 }
 
 .activity-names {
-    margin-bottom: 1rem;
+    margin-block: 1rem;
     font-size: 16px;
     color: lighter;
-	height: 1rem;
+	height: 2rem;
+    display: flex;
 }
+.activity-names::before {
+    content: '?';
+    font-size: 12px;
+    color: rgb(177, 177, 177);
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    padding-top: 1px;
+    margin-top: 2px;
+    margin-right: 1rem;
+}
+
+#questionTooltip {
+    display: none;
+}
+
+.activity-names:hover #questionTooltip {
+    display: block;
+}
+
 
 /* Stile Form ROI */
 
